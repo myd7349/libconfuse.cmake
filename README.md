@@ -8,4 +8,4 @@ Test with [<kbd>2f7d120</kbd>](https://github.com/martinh/libconfuse/tree/2f7d12
 License
 =====
 
-ISC
+MIT
