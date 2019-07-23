@@ -103,22 +103,24 @@ else ()
     target_compile_definitions(libconfuse PUBLIC BUILDING_STATIC)
 endif ()
 
-string(COMPARE EQUAL "${CMAKE_C_COMPILER_ID}" "GNU" USING_GNUC)
-
 target_compile_definitions(libconfuse
     PUBLIC
         $<BUILD_INTERFACE:HAVE_CONFIG_H>
     PRIVATE
-        $<$<BOOL:${MSVC}>:_CRT_SECURE_NO_WARNINGS>
-        $<$<BOOL:${MSVC}>:_CRT_NONSTDC_NO_DEPRECATE>
-        $<$<BOOL:${MSVC}>:strcasecmp=_stricmp>
-        $<$<BOOL:${USING_GNUC}>:_GNU_SOURCE>
+        $<$<C_COMPILER_ID:MSVC>:
+            _CRT_SECURE_NO_WARNINGS
+            _CRT_NONSTDC_NO_DEPRECATE
+            strcasecmp=_stricmp
+        >
+        $<$<C_COMPILER_ID:GNU>:_GNU_SOURCE>
 )
 
 target_include_directories(libconfuse
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/src>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
+        $<BUILD_INTERFACE:
+            ${CMAKE_CURRENT_LIST_DIR}/src
+            ${CMAKE_CURRENT_BINARY_DIR}
+        >
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
@@ -150,3 +152,4 @@ install(
 # https://www.gnu.org/software/gettext/manual/html_node/AM_005fGNU_005fGETTEXT.html
 # https://stackoverflow.com/questions/10521635/using-intltool-with-cmake/43794288#43794288
 # https://github.com/raysan5/raylib/blob/master/raylib.pc.in
+# https://github.com/jedisct1/libhydrogen/blob/master/CMakeLists.txt
