@@ -1,0 +1,44 @@
+name: libconfuse.cmake testing
+
+on:
+  push:
+    branches:
+      - ci
+  pull_request:
+    branches:
+      - ci
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest, windows-latest ]
+    steps:
+      - name: Cloing ${{ github.repository }}...
+        uses: actions/checkout@v2
+        with:
+          path: libconfuse.cmake
+
+      - name: Cloning libconfuse...
+        uses: actions/checkout@v2
+        with:
+          repository: martinh/libconfuse
+          path: libconfuse
+
+      - name: Configuring, building, installing libconfuse...
+        run: |
+          cp libconfuse.cmake/CMakeLists.txt libconfuse/
+          cp libconfuse.cmake/config.h.in libconfuse/
+          cd libconfuse
+          mkdir build
+          pushd build
+          cmake .. -DCMAKE_INSTALL_PREFIX=install
+          make install
+          popd
+
+# References:
+# [actions/starter-workflows](https://github.com/actions/starter-workflows)
+# [vcpkg-example](https://github.com/myd7349/simdjson-cmake-example)
+# [Workflow syntax for GitHub Actions](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions)
+# [Context and expression syntax for GitHub Actions](https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions)
