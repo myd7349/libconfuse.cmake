@@ -11,13 +11,21 @@ Build & Install
 
 
 mkdir my_genimage && cd my_genimage
+
 mkdir build-libconfuse
+
 git clone https://github.com/libconfuse/libconfuse
+
 //put to original libconfuse/ folder files CMakeLists.txt and config.h.in (replace)
+
 cmake -S libconfuse/ -B build_libconfuse/ -DCMAKE_BUILD_TYPE=Release
+
 cmake --build build_libconfuse/ --parallel 
+
 cd build_libconfuse/
+
 sudo checkinstall
+
 //to remove use: dpkg -r build-libconfuse
 
 
