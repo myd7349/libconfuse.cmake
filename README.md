@@ -18,7 +18,7 @@ _install conan_
 pip install conan --pre --user
 pip install conan --user --upgrade
 
-_Download test example_
+//download test example
 
 git clone https://github.com/libconfuse/libconfuse
 
