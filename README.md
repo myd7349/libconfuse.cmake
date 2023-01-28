@@ -13,8 +13,12 @@ Build & Install
 
 mkdir my_genimage && cd my_genimage
 
-_install conan_
-//pip uninstall conan
+//uninstall conan
+
+pip uninstall conan
+
+//install conan
+
 pip install conan --pre --user
 pip install conan --user --upgrade
 
