@@ -13,9 +13,7 @@ Build & Install
 
 mkdir my_genimage && cd my_genimage
 
-//uninstall conan
-
-pip uninstall conan
+//to uninstall conan use: pip uninstall conan
 
 //install conan
 
