@@ -9,16 +9,16 @@ Test with [<kbd>2f7d120</kbd>](https://github.com/martinh/libconfuse/tree/2f7d12
 Build & Install
 ---------------
 
-# using conan (better)
+**using conan (better)**
 
 mkdir my_genimage && cd my_genimage
 
-# install conan
-# pip uninstall conan
+_install conan_
+//pip uninstall conan
 pip install conan --pre --user
 pip install conan --user --upgrade
 
-#Download test example
+_Download test example_
 git clone https://github.com/libconfuse/libconfuse
 
 //put to original libconfuse/ folder files CMakeLists.txt and config.h.in (replace) and conanfile.txt
@@ -41,7 +41,7 @@ sudo checkinstall --pkgname="libconfuse" --nodoc --pkgversion="1" --default
 
 //to remove use: dpkg -r build-libconfuse
 
-# using cmake only
+**using cmake only**
 
 mkdir my_genimage && cd my_genimage
 
