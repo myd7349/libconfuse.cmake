@@ -16,8 +16,8 @@ set(PACKAGE_TARNAME ${PACKAGE})
 set(PACKAGE_STRING  "${PACKAGE_NAME} ${PACKAGE_VERSION}")
 
 string(REGEX REPLACE "([0-9]+.[0-9]+.[0-9]+).*" "\\1" SEMANTIC_VERSION ${PACKAGE_VERSION})
-
-project(libconfuse VERSION ${SEMANTIC_VERSION} LANGUAGES C)
+string(REPLACE "-dev" "" SEMANTIC_VERSION_NO_DEV "${SEMANTIC_VERSION}") # https://github.com/libconfuse/libconfuse/pull/168/files
+project(libconfuse VERSION ${SEMANTIC_VERSION_NO_DEV} LANGUAGES C)
 
 include(CheckFunctionExists)
 include(CheckIncludeFile)
